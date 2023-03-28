@@ -205,3 +205,10 @@ The handleVote function takes two arguments: button and actionUrl. This function
         }
      
 ## Summary
+In summary, the TheatreCMS project provided an excellent opportunity to showcase and develop a wide range of skills in web development and problem-solving. Throughout the project, I focused on enhancing functionality and performance in both the Production and Blog areas.
+
+In the Production area, I demonstrated my abilities in developing CRUD operations, working with event-related data, and implementing role-based restrictions. The image preview functionality and photo storage/retrieval implementations are examples of my proficiency in handling multimedia content within a web application.
+
+In the Blog area, my work emphasized my skills in creating seamless user interactions using AJAX, adding reply functionality for better organization and discussion flow, and handling comment deletion through a confirmation modal. These features highlight my ability to work with diverse technologies and adapt to various requirements within an application.
+
+These experiences in the TheatreCMS project showcase my versatility as a developer and my commitment to delivering a high-quality, user-centric product. By taking on challenges and implementing features in different areas of the project, I have honed my technical skills and gained valuable experience in handling a wide array of web development tasks.
