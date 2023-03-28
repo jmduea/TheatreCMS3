@@ -19,3 +19,7 @@ During this period, I was tasked with working in two areas of the project, the P
 - Replying to someone's comment:
 
 ![CreateReplyGif](https://github.com/jmduea/TheatreCMS3/blob/main/Blog/CreateReply.gif)
+
+- Deleting a comment:
+
+![DeleteCommentGif](https://github.com/jmduea/TheatreCMS3/blob/main/Blog/DeleteComment.gif)
