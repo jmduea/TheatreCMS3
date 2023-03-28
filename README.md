@@ -31,6 +31,48 @@ During this period, I was tasked with working in two areas of the project, the P
 
 ### Code Snippets from Production Area:
 
+- **JavaScript for showing image preview:**
+
+This function, showImagePreview, takes an input element as a parameter and displays a preview of an image file selected by the user. If the input element has a file, the function creates a new FileReader object to read the file data. Once the file is loaded, it sets the src attribute of an image element with the ID 'imgPreview' to the loaded file data, and changes its display style to 'block', making the image preview visible on the webpage.
+
+       function showImagePreview(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                   var imgPreview = document.getElementById('imgPreview');
+                   imgPreview.src = e.target.result;
+                   imgPreview.style.display = 'block';
+               };
+               reader.readAsDataURL(input.files[0]);
+           }
+       }
+
+- **Calculating even duration, days remaining, and dynamically generating an appropriate badge pill for an event.**
+
+This snippet calculates the event duration and the number of days remaining until the event ends using C# code. Then, it dynamically generates an appropriate badge pill next to the event title based on the days remaining. The badge indicates whether the event is on its last day, has days remaining, just ended, or ended some days ago.
+
+      int duration = (item.EndDate - item.StartDate).Days + 1;
+      int daysRemaining = (item.EndDate - DateTime.Today).Days;
+
+      <span class="badge badge-pill @(daysRemaining == 0 ? "calendarevent-index--last-day" : (daysRemaining > 0 ? "calendarevent-index--days-remaining" :  "calendarevent-index--event-ended")) ml-2">
+      @if (daysRemaining == 0)
+      {
+          <text>Last Day!</text>
+      }
+      else if (daysRemaining > 0)
+      {
+          <text>@daysRemaining days remaining!</text>
+      }
+      else if (daysRemaining == -1)
+      {
+          <text>This event just ended!</text>
+      }
+      else
+      {
+          <text>This event ended @(-daysRemaining) days ago!</text>
+      }
+      </span>
+
 ### Blog Area:
  
 1. User Interface Enhancements: I updated the UI of the blog comments section, focusing on improving the comment display and interactions, including like/dislike buttons, reply buttons, and delete buttons. I also implemented progress bars for visualizing the like/dislike ratio of comments.
