@@ -3,10 +3,10 @@
 Over the last two weeks of my time at The Tech Academy, I worked on the TheatreCMS project, an ASP.NET MVC and Entity Framework-based content management system (CMS) designed for a theater/acting company. The primary goal of this project was to create an easy-to-use platform for non-technical users to manage website content, productions, subscribers, and maintain a wiki of past performances and performers. The development environment used was Visual Studio 2019, and the application was built on the .NET framework 4.7.2.
 
 ### Table of Contents
-- [Production Area Contributions]()
-- [Production Area Code Snippets]()
-- [Blog Area Contributions]()
-- [Blog Area Code Snippets]()
+- [Production Area Contributions](https://github.com/jmduea/TheatreCMS3/blob/main/README.md#production-area)
+- [Production Area Code Snippets](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
+- [Blog Area Contributions](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
+- [Blog Area Code Snippets](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
 - [Summary]()
 
 ## Key Contributions:
@@ -53,3 +53,4 @@ During this period, I was tasked with working in two areas of the project, the P
 
 ### Code Snippets from Blog Area:
 
+## Summary
