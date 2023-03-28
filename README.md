@@ -7,7 +7,7 @@ Over the last two weeks of my time at The Tech Academy, I worked on the TheatreC
 - [Production Area Code Snippets](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
 - [Blog Area Contributions](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
 - [Blog Area Code Snippets](https://github.com/jmduea/TheatreCMS3#code-snippets-from-production-area)
-- [Summary]()
+- [Summary](https://github.com/jmduea/TheatreCMS3#summary)
 
 ## Key Contributions:
 During this period, I was tasked with working in two areas of the project, the Production area and Blog area. I made several key contributions to both areas of the project during this time. Read on for examples of the contributions I made in each area.
