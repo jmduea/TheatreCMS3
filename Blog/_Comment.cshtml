@@ -1,0 +1,43 @@
+﻿@model TheatreCMS3.Areas.Blog.Models.Comment
+
+@if (Model != null)
+{
+    <div class="comment-_comments--container" data-comment-id="@Model.CommentId">
+        <!-- Header section showing the author and time since the comment was posted -->
+        <div class="comment-_comments--header">
+            <span class="comment-author">@((Model.Author != null) ? Model.Author.UserName : "Unknown")</span>
+            <span class="comment-time">- @((DateTime.Now - Model.CommentDate).ToString("dd\\:hh\\:mm")) ago</span>
+        </div>
+        <!-- Display the comment message -->
+        <div class="comment-_comments--message">
+            @Model.Message
+        </div>
+        <!-- Action buttons for like, dislike, reply, and delete -->
+        <div class="comment-_comments--actions">
+            <button class="comment-_comments--btn like-btn">
+                <i class="fas fa-chevron-up"></i> @Model.Likes
+            </button>
+            <button class="comment-_comments--btn dislike-btn">
+                <i class="fas fa-chevron-down"></i> @Model.Dislikes
+            </button>
+            <button class="comment-_comments--replybtn" data-parent-comment-container="$(this).closest('.comment-_comments--container')">Reply</button>
+            <button class="comment-_comments--dangerbtn" data-toggle="modal" data-target="#deleteCommentModal">
+                <i class="fas fa-trash"></i>
+            </button>
+            <!-- Progress bar container below the buttons -->
+            <div class="progress comment-progress bg-danger" id="comment-progress" style="width: 100px;">
+                <div class="progress-bar comment-progress-bar bg-success" id="comment-progress-bar" role="progressbar" style="width: @Model.LikeRatio()%" aria-valuenow="@Model.LikeRatio()" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <!-- Container for replies -->
+        <div class="comment-replies-@Model.CommentId comment-_comments--replies" id="comment-replies-@Model.CommentId">
+            @if (Model.Replies != null)
+            {
+                foreach (var reply in Model.Replies)
+                {
+                    @Html.Partial("_Comment", reply)
+                }
+            }
+        </div>
+    </div>
+}

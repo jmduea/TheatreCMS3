@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TheatreCMS3.Areas.Blog.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center;">Comments</h2>
+
+<form id="create-comment-form" class="comment-index--commentform">
+    @Html.AntiForgeryToken()
+    <textarea class="form-control comment-index--commentformmessage" name="message" rows="3" placeholder="Write a comment..."></textarea>
+    <button type="submit" class="comment-_comments--btn">Post Comment</button>
+</form>
+
+@Html.Partial("_Comments", Model)

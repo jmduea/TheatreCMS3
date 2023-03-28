@@ -1,0 +1,97 @@
+﻿/* ▼ This ▼ is for you to easily reference the colors on the Site.css page */
+/* Do not uncomment these color variables */
+
+/* CSS color variables */
+/*:root { /* Color palette for css */
+/* --main-color: #DB1A11;  Red */
+/*--main-color--light: #F04D44;*/ /* Red, a shade lighter */
+/*--secondary-color: #D6972A;*/ /* Yellow gold */
+/*--secondary-color--dark: #9D7C39;*/ /* Dark Gold */
+/*--light-color: #FFFBFB;*/ /* White */
+/*--dark-color: #000000;*/ /* Black */
+/*}*/
+
+/* Start Comment Styling Section */
+.comment-_comments--container {
+    background-color: var(--secondary-color);
+    border: 3px var(--dark-color) solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comment-_comments--replies {
+    margin-top: 10px;
+}
+
+.comment-_comments--header {
+    color: var(--dark-color);
+    font-weight: bold;
+}
+
+.comment-_comments--message {
+    color: var(--dark-color);
+}
+
+.comment-_comments--actions {
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.comment-_comments--btn,
+.comment-_comments--replybtn {
+    background-color: var(--secondary-color--dark);
+    border-radius: 5px;
+    border: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: Var(--dark-color);
+}
+
+.comment-_comments--dangerbtn {
+    background-color: var(--main-color);
+    border-radius: 5px;
+    border: hidden;
+    margin-bottom: 10px;
+}
+
+.comment-_comments--dangerbtn:hover,
+.comment-_comments--replybtn:hover,
+.comment-_comments--btn:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border-color: var(--secondary-color--dark);
+}
+
+.comment-_comments--dangerbtn:active {
+    background-color: var(--main-color--light);
+}
+
+.comment-_comments--btn:active,
+.comment-_comments--replybtn:active {
+    background-color: var(--secondary-color--dark);
+    border-color: var(--secondary-color--dark);
+}
+.comment-index--commentform {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    border: 3px var(--dark-color) solid;
+    border-radius: 10px;
+}
+
+.comment-index--commentformmessage {
+}
+.comment-index--replyform{
+    background-color: var(--secondary-color);
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 3px var(--dark-color) solid;
+    border-radius: 10px;
+}
+
+.comment-_comments--deletemodal {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+/* End Comment Styling Section */
