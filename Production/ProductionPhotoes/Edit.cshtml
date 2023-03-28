@@ -1,0 +1,104 @@
+﻿@model TheatreCMS3.Areas.Prod.Models.ProductionPhoto
+@using TheatreCMS3.Areas.Prod.Models
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<!-- Begin form for editing ProductionPhoto object -->
+@using (Html.BeginForm("Edit", "ProductionPhotoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    // Include anti-forgery token for security
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>ProductionPhoto</h4>
+    <hr />
+
+    <!-- Display any validation errors -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!-- Hidden input field for ProductionPhoto Id -->
+    @Html.HiddenFor(model => model.ProPhotoId)
+
+    <!-- Title input field -->
+    <div class="form-group">
+        <!-- Label for Title field -->
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <!-- Input field for Title -->
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            <!-- Display any validation errors for Title field -->
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Production dropdown -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductionId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.ProductionId,
+            new SelectList((IEnumerable<Production>)ViewData["Productions"], "ProductionId", "Title", Model.ProductionId),
+            "-- Select Production --",
+            new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ProductionId, "", new { @class = "text-danger" })
+    </div>
+
+    <!-- Photo file input -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.PhotoFile, new { type = "file", id = "photoFileInput", onchange = "showImagePreview(this)" })
+            <img id="imgPreview" src="@(Model.PhotoFile != null ? "data:image;base64," + Convert.ToBase64String(Model.PhotoFile) : "#")" alt="Image preview" style="max-width: 200px; max-height: 200px; margin-left: 20px;" />
+            @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Description input field -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Save button -->
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<!-- Back to list link -->
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<!-- Scripts section -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        // Function to show image preview on file input change
+        function showImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var imgPreview = document.getElementById('imgPreview');
+                    imgPreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Event listener for file input change
+        document.getElementById('photoFileInput').addEventListener('change', function () {
+            this.form.reset();
+            this.files = input.files;
+        });
+    </script>
+    }

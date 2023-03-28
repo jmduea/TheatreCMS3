@@ -1,0 +1,115 @@
+﻿@model IEnumerable<TheatreCMS3.Areas.Prod.Models.CalendarEvent>
+
+@{
+    // Set the title and layout for the view          s
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="calendarevent-index--header">
+    <h2>Calendar Events</h2>
+    <!-- Render a link to create a new CalendarEvent -->
+    @Html.ActionLink("Create New", "Create", "CalendarEvents", null, new { @class = "calendarevent-index--createnewbtn" })
+
+    <hr />
+</div>
+
+<!-- Begin the table structure for displaying CalendarEvents -->
+<table class="calendarevent-index--table">
+    <thead class="calendarevent-index--thead">
+        <tr>
+            <!-- Define the table headers -->
+            <th>Date</th>
+            <th>Title</th>
+            <th>Time</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody class="calendarevent-index--tbody">
+        <!-- Loop through each CalendarEvent in the Model and display its data -->
+        @foreach (var item in Model)
+        {
+            // Calculate the duration of the event and the number of days remaining until the event ends
+            int duration = (item.EndDate - item.StartDate).Days + 1;
+            int daysRemaining = (item.EndDate - DateTime.Today).Days;
+
+            // Begin rendering a table row for each CalendarEvent
+            <tr class="calendarevent-index--row">
+                <td class="calendarevent-index--date">
+                    <!-- Render the date container, including day and month -->
+                    <div class="calendarevent-index--datecontainer">
+                        <span class="day">@item.StartDate.Day</span>
+                        <span class="month">@item.StartDate.ToString("MMM")</span>
+                        <!-- Check if the event is an all-day event, and display "All Day" if true -->
+                        @if (item.AllDay)
+                        {
+                            <div>All Day</div>
+                        }
+                        // If the event has a duration of more than 1 day, display the duration
+                        else if (duration > 1)
+                        {
+                            <div data-toggle="popover" title="Event Duration" data-content="This is a @duration day event.">
+                                <i class="fas fa-clock"></i> @duration day@(duration > 1 ? "s" : "")
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td class="calendarevent-index--detailcontainer">
+                    <!-- Render the title of the CalendarEvent -->
+                    <div class="calendarevent-index--title">
+                        @Html.DisplayFor(modelItem => item.Title)
+                        <!-- Render a badge pill next to the title to display days remaining or event status -->
+                        <span class="badge badge-pill @(daysRemaining == 0 ? "calendarevent-index--last-day" : (daysRemaining > 0 ? "calendarevent-index--days-remaining" : "calendarevent-index--event-ended")) ml-2">
+                            @if (daysRemaining == 0)
+                            {
+                                <text>Last Day!</text>
+                            }
+                            else if (daysRemaining > 0)
+                            {
+                                <text>@daysRemaining days remaining!</text>
+                            }
+                            else if (daysRemaining == -1)
+                            {
+                                <text>This event just ended!</text>
+                            }
+                            else
+                            {
+                                <text>This event ended @(-daysRemaining) days ago!</text>
+                            }
+                        </span>
+                    </div>
+                    <!-- Render the time of the CalendarEvent -->
+                    <div class="calendarevent-index--time">
+                        @if (!item.AllDay && item.StartTime.HasValue)
+                        {
+                            <span>@item.StartDate.ToString("ddd, ")@item.StartTime.Value.ToString("h:mm tt")</span>
+                        }
+                        <!-- Check if the event has an end time, and display it if true -->
+                        @if (item.EndTime.HasValue)
+                        {
+                            <span> - @item.EndTime.Value.ToString("h:mm tt")</span>
+                        }
+                    </div>
+                    <!-- Render the description of the CalendarEvent -->
+                    <div class="calendarevent-index--description">
+                        <!-- Display the event description in a read-only textarea -->
+                        <textarea readonly class="calendarevent-index--description-textbox">@Html.DisplayFor(modelItem => item.Description)</textarea>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Render additional scripts for this view -->
+@section Scripts {
+    <script>
+        // Initialize the jQuery function for DOM ready
+        $(function () {
+            // Enable popovers for displaying event duration
+            $('[data-toggle="popover"]').popover({
+                trigger: 'click focus'
+            });
+        });
+    </script>
+}

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TheatreCMS3.Areas.Prod.Models.ProductionPhoto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Create Header and Add Production Photo Button -->
+<div class="row">
+    <div class="col-md-9 productionphoto-index--pageheader">
+        <h2>Production Photos</h2>
+        <div class="col">
+            <a href="@Url.Action("Create", "ProductionPhotoes")" class="productionphoto-index--create-new-btn">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+@{
+    // Group Production Photos by ProductionId
+    var groupedPhotos = Model.GroupBy(p => p.ProductionId);
+}
+
+<!-- Iterate through each group of photos -->
+@foreach (var productionGroup in groupedPhotos)
+{
+    // Display Production title as header
+    <div class="row">
+        <div class="col-md-12 productionphoto-index--prodheader">
+            @{
+                var firstProductionPhoto = productionGroup.FirstOrDefault();
+                if (firstProductionPhoto != null && firstProductionPhoto.Production != null)
+                {
+                    <h3>@firstProductionPhoto.Production.Title</h3>
+                }
+                else
+                {
+                    <h3>No production title available</h3>
+                }
+            }
+        </div>
+    </div>
+
+    // Display photo cards
+    <div class="row">
+        @foreach (var photo in productionGroup)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 productionphoto-index--card">
+                    <a href="@Url.Action("Details", "Productions", new { id = photo.ProductionId })">
+                        @if (photo.PhotoFile != null)
+                        {
+                            <img src="data:image;base64,@(Convert.ToBase64String(photo.PhotoFile))" class="card-img-top productionphoto-index--image" alt="Production Photo">
+                        }
+                        else
+                        {
+                            <div class="card-img-top productionphoto-index--image d-flex align-items-center justify-content-center" style="background-color: #ccc; color: #000;">
+                                <span>No Image Available</span>
+                            </div>
+                        }
+                    </a>
+                    <div class="card-body" style="background-color: var(--secondary-color); color: var(--dark-color);">
+                        <h5 class="card-title">@photo.Title</h5>
+                        <p class="card-text">@photo.Description</p>
+                        <a href="@Url.Action("Edit", "ProductionPhotoes", new { id = photo.ProPhotoId })" class="badge badge-pill productionphoto-index--badge-main-color" style="color: var(--dark-color);">Edit</a>
+                        <a href="@Url.Action("Delete", "ProductionPhotoes", new { id = photo.ProPhotoId })" class="badge badge-pill productionphoto-index--badge-main-color" style="color: var(--dark-color);">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!-- Create new photo button for each group -->
+        <div class="col-md-4">
+            <a href="@Url.Action("Create", "ProductionPhotoes", new { ProductionId = productionGroup.Key })" class="productionphoto-index--create-new-btn">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+}
+

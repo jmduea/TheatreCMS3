@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1>You are not authorized to visit that page.</h1>
+
+    <!-- Access Denied Image -->
+    <img src="~/Content/images/access_denied.png" alt="Access Denied" width="500" height="500" />
+
+    <!-- Link to the login page -->
+    <p>
+        @Html.ActionLink("Log in", "Login", "Account", new { area = "" }, null)
+    </p>
+    <p>
+        @Html.ActionLink("Back to Calendar Events", "Index", "CalendarEvents", new { area = "Prod" }, null)
+    </p>
+</div>
