@@ -2,6 +2,13 @@
 ## Introduction:
 Over the last two weeks of my time at The Tech Academy, I worked on the TheatreCMS project, an ASP.NET MVC and Entity Framework-based content management system (CMS) designed for a theater/acting company. The primary goal of this project was to create an easy-to-use platform for non-technical users to manage website content, productions, subscribers, and maintain a wiki of past performances and performers. The development environment used was Visual Studio 2019, and the application was built on the .NET framework 4.7.2.
 
+### Table of Contents
+- [Production Area Contributions]()
+- [Production Area Code Snippets]()
+- [Blog Area Contributions]()
+- [Blog Area Code Snippets]()
+- [Summary]()
+
 ## Key Contributions:
 During this period, I was tasked with working in two areas of the project, the Production area and Blog area. I made several key contributions to both areas of the project during this time. Read on for examples of the contributions I made in each area.
 
@@ -15,7 +22,15 @@ During this period, I was tasked with working in two areas of the project, the P
 
 ### Code in action:
 - Event duration popover and time remaining pill badge implementation:
+
 ![EventDurationGif](https://github.com/jmduea/TheatreCMS3/blob/main/Production/EventDuration.gif)
+
+- Uploaded image preview functionality:
+
+![UploadedImagePreviewGif](https://github.com/jmduea/TheatreCMS3/blob/main/Production/UploadedImagePreview.gif)
+
+### Code Snippets from Production Area:
+
 ### Blog Area:
  
 1. User Interface Enhancements: I updated the UI of the blog comments section, focusing on improving the comment display and interactions, including like/dislike buttons, reply buttons, and delete buttons. I also implemented progress bars for visualizing the like/dislike ratio of comments.
@@ -35,3 +50,6 @@ During this period, I was tasked with working in two areas of the project, the P
 - Deleting a comment:
 
 ![DeleteCommentGif](https://github.com/jmduea/TheatreCMS3/blob/main/Blog/DeleteComment.gif)
+
+### Code Snippets from Blog Area:
+
