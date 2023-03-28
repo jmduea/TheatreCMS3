@@ -4,6 +4,18 @@ Over the last two weeks of my time at The Tech Academy, I worked on the TheatreC
 
 ## Key Contributions:
 During this period, I was tasked with working in two areas of the project, the Production area and Blog area. I made several key contributions to both areas of the project during this time. Read on for examples of the contributions I made in each area.
+
+### Production Area:
+
+1. Developed and styled CRUD pages for CalendarEvent and ProductionPhoto models, creating user-friendly interfaces for managing theater events and production images.
+2. Implemented event duration and time remaining indicators on the CalendarEvent Index page, providing useful information to the end-users.
+3. Added image preview functionality for uploading ProductionPhotos, allowing users to review their selected images before submission.
+4. Created an EventPlanner class with role-based restrictions for CRUD operations, ensuring secure access to content management functions.
+5. Implemented photo storage and retrieval for ProductionPhotos, converting uploaded images into byte arrays for effecient database storage and retrieval.
+
+### Code in action:
+- Event duration popover and time remaining pill badge implementation:
+![EventDurationGif](https://github.com/jmduea/TheatreCMS3/blob/main/Production/EventDuration.gif)
 ### Blog Area:
  
 1. User Interface Enhancements: I updated the UI of the blog comments section, focusing on improving the comment display and interactions, including like/dislike buttons, reply buttons, and delete buttons. I also implemented progress bars for visualizing the like/dislike ratio of comments.
